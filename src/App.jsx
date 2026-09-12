@@ -1,26 +1,19 @@
-import Navbar from './NavBar/Navbar'
-import Dashboard from './NavBar/Dashboard'
-import Home from './NavBar/Home'
-import Login from './NavBar/Login'
-import SignUp from './NavBar/SignUp'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
-
-function App() {
-
-  const router = createBrowserRouter([
-  {path: "/", element: <Dashboard />},
-  {path: "/home", element: <Home />},
-  {path: "/login", element: <Login />},
-  {path: "/signup", element: <SignUp />}
-])
-
+export default function App() {
   return (
-    <>
-      <Navbar />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
