@@ -1,68 +1,26 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-
-export default function Signup() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate('/dashboard');
-  };
-
+function Signup() {
   return (
-    <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
-      <Navbar title="Sign Up" />
-      <div class="flex-grow flex items-center justify-center px-4 py-12">
-        <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 w-full max-w-md">
-          <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
-          <form onSubmit={handleSubmit} class="space-y-4">
-            <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">Name:</label>
-              <input 
-                type="text" 
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                class="w-full px-3 py-2 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">Email:</label>
-              <input 
-                type="email" 
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="ritikvats22@gmail.com" 
-                class="w-full px-3 py-2 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">Password:</label>
-              <input 
-                type="password" 
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••" 
-                class="w-full px-3 py-2 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded text-xs transition uppercase tracking-wider">
-              SIGN UP
-            </button>
-          </form>
-          <p class="text-xs text-center text-gray-500 mt-4">
-            Already have an account? <Link to="/login" class="text-green-600 hover:underline">Login</Link>
-          </p>
-        </div>
+    <div className="auth-wrapper">
+      <div className="card auth-card">
+        <h2>Sign Up</h2>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Enter name" required />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="ritikvitube22@gmail.com" required />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" required />
+          </div>
+          <button type="submit" className="btn-submit">SIGN UP</button>
+        </form>
       </div>
-      <Footer />
     </div>
   );
 }
+
+export default Signup;
